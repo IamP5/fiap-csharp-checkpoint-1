@@ -1,0 +1,22 @@
+Calculadora (Adição / Subtração / Multiplicação / Divisão)
+
+Escolha uma opção:
+1-Adição
+2-Subtração
+3-Multiplicação
+4-Divisão
+5-Sair
+
+Opção: Digite o primeiro número: Digite o segundo número: 
+Resultado: 5
+
+Pressione ENTER para voltar ao menu...Calculadora (Adição / Subtração / Multiplicação / Divisão)
+
+Escolha uma opção:
+1-Adição
+2-Subtração
+3-Multiplicação
+4-Divisão
+5-Sair
+
+Opção: Encerrando... até a próxima!
