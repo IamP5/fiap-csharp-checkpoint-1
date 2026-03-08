@@ -1,10 +1,17 @@
 #!/usr/bin/env python3
+import argparse
 from pathlib import Path
 from PIL import Image, ImageDraw, ImageFont
 
 ROOT = Path(__file__).resolve().parents[1]
-EVIDENCE_DIR = ROOT / "docs" / "evidence"
-PRINTS_DIR = ROOT / "docs" / "prints"
+
+parser = argparse.ArgumentParser()
+parser.add_argument("--input", default=str(ROOT / "docs" / "evidence"))
+parser.add_argument("--output", default=str(ROOT / "docs" / "prints"))
+args = parser.parse_args()
+
+EVIDENCE_DIR = Path(args.input)
+PRINTS_DIR = Path(args.output)
 PRINTS_DIR.mkdir(parents=True, exist_ok=True)
 
 MAP = {
@@ -64,4 +71,8 @@ for src_name, out_name in MAP.items():
         y += line_height + line_spacing
 
     img.save(PRINTS_DIR / out_name)
-    print(f"Generated {(PRINTS_DIR / out_name).relative_to(ROOT)}")
+    try:
+        rel = (PRINTS_DIR / out_name).relative_to(ROOT)
+    except ValueError:
+        rel = (PRINTS_DIR / out_name)
+    print(f"Generated {rel}")

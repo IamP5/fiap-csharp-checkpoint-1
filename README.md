@@ -33,15 +33,13 @@ cd fiap-checkpoint1-calculadora
 
 ## Evidências (prints)
 
-> Substitua os placeholders abaixo pelos screenshots finais da execução.
+> Evidências reais de execução estão em `docs/evidence-real/*.txt` e os prints gerados a partir dessas execuções em `docs/prints/*.png`.
 >
-> Para gerar execuções-base automaticamente (em texto) e facilitar os prints:
+> Para regenerar tudo (execução real em pseudo-terminal + prints):
 >
 > ```bash
-> ./scripts/run-evidence.sh
+> ./scripts/generate-real-evidence.sh
 > ```
->
-> Os logs ficam em `docs/evidence/*.txt`.
 
 ### 1) Tela com menu carregado
 ![Menu da calculadora](docs/prints/menu.png)
