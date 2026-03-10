@@ -14,6 +14,7 @@ Aplicação de console em C# para realizar as operações básicas:
 | Gabriel Gouvea    | 555528 |
 | Miguel Kapicius   | 556198 |
 | Thiago Ferreira   | 555608 |
+| Nicolly Bleinat   | 555359 |
 
 ## Requisitos atendidos
 
