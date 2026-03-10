@@ -8,7 +8,12 @@ Aplicação de console em C# para realizar as operações básicas:
 
 ## Integrantes
 
-- Bruno
+| Nome              | RM     |
+| ----------------- | ------ |
+| Bruno Dominicheli | 554981 |
+| Gabriel Gouvea    | 555528 |
+| Miguel Kapicius   | 556198 |
+| Thiago Ferreira   | 555608 |
 
 ## Requisitos atendidos
 
@@ -28,18 +33,10 @@ Aplicação de console em C# para realizar as operações básicas:
 ### Rodando o projeto
 ```bash
 cd fiap-checkpoint1-calculadora
-~/.dotnet/dotnet run
+dotnet Program.cs
 ```
 
 ## Evidências (prints)
-
-> Evidências reais de execução estão em `docs/evidence-real/*.txt` e os prints gerados a partir dessas execuções em `docs/prints/*.png`.
->
-> Para regenerar tudo (execução real em pseudo-terminal + prints):
->
-> ```bash
-> ./scripts/generate-real-evidence.sh
-> ```
 
 ### 1) Tela com menu carregado
 ![Menu da calculadora](docs/prints/menu.png)
@@ -55,6 +52,9 @@ cd fiap-checkpoint1-calculadora
 
 ### 5) Evidência de teste — Divisão
 ![Teste divisão](docs/prints/divisao.png)
+
+### 6) Evidência de teste - Divisão por zero
+![Teste divisão por zero](docs/prints/divisao_por_zero.png)
 
 ## Exemplo de uso
 
