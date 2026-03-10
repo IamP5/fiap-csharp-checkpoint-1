@@ -1,4 +1,4 @@
-﻿using System.Globalization;
+using System.Globalization;
 
 CultureInfo.DefaultThreadCurrentCulture = CultureInfo.InvariantCulture;
 
@@ -10,32 +10,26 @@ while (true)
     Console.WriteLine(appTitle);
     Console.WriteLine();
     Console.WriteLine("Escolha uma opção:");
-    Console.WriteLine("1-Adição");
-    Console.WriteLine("2-Subtração");
-    Console.WriteLine("3-Multiplicação");
-    Console.WriteLine("4-Divisão");
-    Console.WriteLine("5-Sair");
+    Console.WriteLine($"{(int)MenuOption.Adição}-{MenuOption.Adição}");
+    Console.WriteLine($"{(int)MenuOption.Subtração}-{MenuOption.Subtração}");
+    Console.WriteLine($"{(int)MenuOption.Multiplicação}-{MenuOption.Multiplicação}");
+    Console.WriteLine($"{(int)MenuOption.Divisão}-{MenuOption.Divisão}");
+    Console.WriteLine($"{(int)MenuOption.Sair}-{MenuOption.Sair}");
     Console.WriteLine();
     Console.Write("Opção: ");
 
     var optionInput = Console.ReadLine();
 
-    if (!int.TryParse(optionInput, out var option))
+    if (!Enum.TryParse(optionInput, out MenuOption option) || !Enum.IsDefined(option))
     {
         ShowMessage("Opção inválida. Digite um número de 1 a 5.");
         continue;
     }
 
-    if (option == 5)
+    if (option == MenuOption.Sair)
     {
         Console.WriteLine("Encerrando... até a próxima!");
         break;
-    }
-
-    if (option is < 1 or > 4)
-    {
-        ShowMessage("Opção inválida. Digite um número de 1 a 5.");
-        continue;
     }
 
     var firstNumber = ReadNumber("Digite o primeiro número: ");
@@ -72,15 +66,15 @@ static decimal ReadNumber(string prompt)
     }
 }
 
-static OperationResult ExecuteOperation(int option, decimal firstNumber, decimal secondNumber)
+static OperationResult ExecuteOperation(MenuOption option, decimal firstNumber, decimal secondNumber)
 {
     return option switch
     {
-        1 => OperationResult.Ok(firstNumber + secondNumber),
-        2 => OperationResult.Ok(firstNumber - secondNumber),
-        3 => OperationResult.Ok(firstNumber * secondNumber),
-        4 when secondNumber == 0 => OperationResult.Fail("Erro: divisão por zero não é permitida."),
-        4 => OperationResult.Ok(firstNumber / secondNumber),
+        MenuOption.Adição        => OperationResult.Ok(firstNumber + secondNumber),
+        MenuOption.Subtração     => OperationResult.Ok(firstNumber - secondNumber),
+        MenuOption.Multiplicação => OperationResult.Ok(firstNumber * secondNumber),
+        MenuOption.Divisão when secondNumber == 0 => OperationResult.Fail("Erro: divisão por zero não é permitida."),
+        MenuOption.Divisão       => OperationResult.Ok(firstNumber / secondNumber),
         _ => OperationResult.Fail("Opção de operação inválida.")
     };
 }
@@ -94,8 +88,10 @@ static void ShowMessage(string message)
     Console.ReadLine();
 }
 
-internal sealed record OperationResult(bool Success, decimal Result, string? ErrorMessage)
+internal enum MenuOption { Adição = 1, Subtração, Multiplicação, Divisão, Sair }
+
+internal sealed record OperationResult(bool Success, decimal? Result, string? ErrorMessage)
 {
     public static OperationResult Ok(decimal result) => new(true, result, null);
-    public static OperationResult Fail(string message) => new(false, 0, message);
+    public static OperationResult Fail(string message) => new(false, null, message);
 }
